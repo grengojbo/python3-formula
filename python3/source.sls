@@ -8,7 +8,7 @@
 
 dev-pkg:
   pkg.installed:
-    - name:
+    - names:
       - build-essential
       - libsqlite3-dev
       - sqlite3
