@@ -1,3 +1,4 @@
+include:
 {% if pillar.get('python3', {}).get('install_from_source') %}
   - python3.source
 {% else %}
