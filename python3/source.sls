@@ -30,7 +30,7 @@ python3:
     - names:
       - ./configure --prefix={{ python3_home }}
       - make && make install
-  - watch:
+    - watch:
       - cmd: get-python3
     - require:
       - cmd: get-python3
