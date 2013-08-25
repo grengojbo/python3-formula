@@ -16,7 +16,7 @@ get-python3:
       - libbz2-dev
   file.managed:
     - name: {{ python3_package }}
-    - source: http://python.org/ftp/python/{{ version }}/{{ python3_package }}
+    - source: http://python.org/ftp/python/{{ version }}/Python-{{ version }}.tar.bz2
     - source_hash: {{ checksum }}
   cmd.wait:
     - cwd: {{ source }}
