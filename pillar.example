@@ -1,0 +1,8 @@
+python3:
+  install_from_source: True
+  version: 3.3.3
+  checksum: md5=7dffe775f3bea68a44f762a3490e5e28
+  home: /opt/python3.3
+  source: 
+      url: http://python.org/ftp/python/3.3.2/Python-3.3.2.tar.bz2
+      source_hash: sha1=DAFJAKSDFJAKDFJ
