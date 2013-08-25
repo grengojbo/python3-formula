@@ -6,14 +6,16 @@
 {% set python3_package = '{0}/Python-{1}.tar.bz2'.format(source, version) -%}
 {% set python3_home = python3.get('home', '/opt/python3.3') -%}
 
-get-python3:
-  pkg.installed:
+pkg-python3:
+ pkg.installed:
     - name:
       - build-essential
       - libsqlite3-dev
       - sqlite3
       - bzip2
       - libbz2-dev
+
+get-python3:
   file.managed:
     - name: {{ python3_package }}
     - source: http://python.org/ftp/python/{{ version }}/Python-{{ version }}.tar.bz2
@@ -23,6 +25,8 @@ get-python3:
     - name: tar jxf {{ python3_package }}
     - watch:
       - file: get-python3
+    - require:
+      - pkg: pkg-python3
 
 python3:
   cmd.wait:
@@ -37,7 +41,7 @@ python3:
 
 get-distribute:
   file.managed:
-    - name: distribute_setup.py
+    - name: {{ source }}/distribute_setup.py
     - source: http://python-distribute.org/distribute_setup.py
   cmd.wait:
     - cwd: {{ source }}
@@ -50,7 +54,6 @@ get-distribute:
     - target: {{ python3_home }}/bin/python3
     - require:
       - cmd: python3
-      - file: {{ python3_home }}
 
 # /usr/bin/pyvenv:
 #   file.symlink:
