@@ -9,11 +9,11 @@
 get-python3:
   pkg.installed:
     - name:
-    	- build-essential
-    	- libsqlite3-dev
-    	- sqlite3
-    	- bzip2
-    	- libbz2-dev
+      - build-essential
+      - libsqlite3-dev
+      - sqlite3
+      - bzip2
+      - libbz2-dev
   file.managed:
     - name: {{ python3_package }}
     - source: http://python.org/ftp/python/{{ version }}/{{ python3_package }}
@@ -29,14 +29,14 @@ python3:
     - cwd: {{ source }}/Python-{{ version }}
     - names:
       - ./configure --prefix={{ python3_home }}
-    	- make && make install
+      - make && make install
   - watch:
       - cmd: get-python3
     - require:
       - cmd: get-python3
 
 get-distribute:
-	file.managed:
+  file.managed:
     - name: distribute_setup.py
     - source: http://python-distribute.org/distribute_setup.py
   cmd.wait:
