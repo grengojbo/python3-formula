@@ -52,12 +52,12 @@ get-distribute:
       - cmd: python3
       - file: {{ python3_home }}
 
-/usr/bin/pyvenv:
-  file.symlink:
-    - target: {{ python3_home }}/bin/pyvenv
-    - require:
-      - cmd: python3
-      - file: {{ python3_home }}
+# /usr/bin/pyvenv:
+#   file.symlink:
+#     - target: {{ python3_home }}/bin/pyvenv
+#     - require:
+#       - cmd: python3
+#       - file: {{ python3_home }}
 
 # get-pip:
 #   cmd.wait:
