@@ -3,5 +3,5 @@
 python3:
   pkg.installed:
     - name:
-    	- {{ python3.python }}
-			- {{ python3.dev }}
+      - {{ python3.python }}
+      - {{ python3.dev }}
