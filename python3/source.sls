@@ -41,7 +41,9 @@ python3:
 get-distribute:
   file.managed:
     - name: {{ source }}/distribute_setup.py
-    - source: http://python-distribute.org/distribute_setup.py
+    - source: salt://python3/files/distribute_setup.py
+    #- require:
+    #  - cmd: python3
   cmd.wait:
     - cwd: {{ source }}
     - name: {{ python3_home }}/bin/activate &&  python distribute_setup.py
