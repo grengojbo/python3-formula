@@ -1,3 +1,3 @@
-/opt/python3.3:
+/usr/src:
   file:
     - directory
