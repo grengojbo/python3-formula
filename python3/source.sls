@@ -41,6 +41,27 @@ get-distribute:
     - source: http://python-distribute.org/distribute_setup.py
   cmd.wait:
     - cwd: {{ source }}
-    - name: {{ python3_home }}/bin/python3 distribute_setup.py
+    - name: {{ python3_home }}/bin/activate &&  python distribute_setup.py
     - watch:
       - file: get-distribute
+
+/usr/bin/python3:
+  file.symlink:
+    - target: {{ python3_home }}/bin/python3
+    - require:
+      - cmd: python3
+      - file: {{ python3_home }}
+
+/usr/bin/pyvenv:
+  file.symlink:
+    - target: {{ python3_home }}/bin/pyvenv
+    - require:
+      - cmd: python3
+      - file: {{ python3_home }}
+
+# get-pip:
+#   cmd.wait:
+#     - cwd: {{ source }}
+#     - name: {{ python3_home }}/bin/activate &&  easy_install pip
+#     - require:
+#       - file: get-distribute
