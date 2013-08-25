@@ -6,8 +6,8 @@
 {% set python3_package = '{0}/Python-{1}.tar.bz2'.format(source, version) -%}
 {% set python3_home = python3.get('home', '/opt/python3.3') -%}
 
-pkg-python3:
- pkg.installed:
+dev-pkg:
+  pkg.installed:
     - name:
       - build-essential
       - libsqlite3-dev
@@ -25,8 +25,7 @@ get-python3:
     - name: tar jxf {{ python3_package }}
     - watch:
       - file: get-python3
-    - require:
-      - pkg: pkg-python3
+      - pkg: dev-pkg
 
 python3:
   cmd.wait:
